@@ -39,3 +39,6 @@ The left-out list came from a reader's comment: *"I'd trust it more if I could s
 - Run files: `runs/2026-11-24_*`. Tests: `python3 test_price_guard.py` (7/7). Plan check: `python3 check_plan.py` (7/7).
 
 Only Instamart for now: it's the only quick-commerce app with an official MCP. Store-specific calls stay in the skill, so Blinkit or Zepto can be added when they launch official ones.
+
+## Thanks
+Big thanks to **Swiggy** for shipping official MCP servers for Instamart and Food. They make it possible for an agent to search and fill a real cart without scraping or workarounds. When Blinkit and Zepto release official MCPs, this agent will add them and compare prices across apps.
