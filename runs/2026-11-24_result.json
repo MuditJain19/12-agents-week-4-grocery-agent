@@ -1,0 +1,126 @@
+{
+ "cart": [
+  {
+   "spinId": "TDF8TT5DOR",
+   "skuId": "HYO15RSI66",
+   "quantity": 2,
+   "label": "NOICE Fresh Malai Paneer 200 g x2",
+   "price": 150,
+   "for_": "Tonight + 3 more meals"
+  },
+  {
+   "spinId": "FAL163U6JD",
+   "skuId": "XW9RMMMUU5",
+   "quantity": 1,
+   "label": "Supreme Harvest Soya Chunks 200 g",
+   "price": 36,
+   "for_": "Tonight: paneer-soya bhurji"
+  },
+  {
+   "spinId": "FG8WDTXSUN",
+   "skuId": "02KZ302FU7",
+   "quantity": 1,
+   "label": "Onion 1 kg",
+   "price": 66,
+   "for_": "Tonight + week"
+  },
+  {
+   "spinId": "0GWBSRKMYQ",
+   "skuId": "2FVH2A4HU0",
+   "quantity": 1,
+   "label": "Indian Tomato 500 g",
+   "price": 22,
+   "for_": "Tonight + week"
+  },
+  {
+   "spinId": "5AKPD3J08Q",
+   "skuId": "9VRA2GJWAJ",
+   "quantity": 1,
+   "label": "Fortune Soya Chunks 1 kg",
+   "price": 166,
+   "for_": "Daily snack + dinners"
+  },
+  {
+   "spinId": "BXETSXD06K",
+   "skuId": "9NFBUA3FUN",
+   "quantity": 1,
+   "label": "Pro Plant Tofu 200 g x2",
+   "price": 112,
+   "for_": "Wed & Mon dinners"
+  },
+  {
+   "spinId": "KJ0EZBGDF4+HEINCJ2T0T",
+   "skuId": "L4JBZ3NB8A+X1P6481CPA",
+   "quantity": 1,
+   "label": "Milky Mist Greek Yoghurt 225 g x5 + x3",
+   "price": 848,
+   "for_": "Snacks + breakfasts"
+  },
+  {
+   "spinId": "D9PNFAT8MI",
+   "skuId": "L6GF8F99SQ",
+   "quantity": 1,
+   "label": "Amul Taaza 500 ml x4",
+   "price": 124,
+   "for_": "Overnight oats + nightly glass"
+  },
+  {
+   "spinId": "YL7ZNQ4NVF",
+   "skuId": "CZWVJZ8IBX",
+   "quantity": 1,
+   "label": "The Health Factory Whole Wheat 350 g",
+   "price": 65,
+   "for_": "Paneer toast breakfasts"
+  },
+  {
+   "spinId": "1VJN27TW4M",
+   "skuId": "ROD9MBR0SB",
+   "quantity": 1,
+   "label": "Safal Frozen Mixed Vegetables 500 g",
+   "price": 76,
+   "for_": "Tofu tikka sabzi"
+  },
+  {
+   "spinId": "JG75C8UARK",
+   "skuId": "IPZAF1NF1Q",
+   "quantity": 1,
+   "label": "Sarson Saag 250 g",
+   "price": 13,
+   "for_": "Thu dal"
+  },
+  {
+   "spinId": "MCNIWG4OC3",
+   "skuId": "ABJ1RS1SG1",
+   "quantity": 1,
+   "label": "Saffola Oats 460 g",
+   "price": 90,
+   "for_": "Oats breakfasts"
+  }
+ ],
+ "left": [
+  {
+   "item": "Spinach / greens",
+   "needed_for": "Thu dal",
+   "status": "SWAP",
+   "usual": 14,
+   "basis": "today's median",
+   "unit": "/100 g",
+   "today": 50.4,
+   "over": 2.6,
+   "did": "Swapped to Sarson Saag 250 g",
+   "first_label": "Baby Spinach 125 g"
+  },
+  {
+   "item": "Tofu 400 g",
+   "needed_for": "Wed & Mon dinners",
+   "status": "SKIPPED",
+   "usual": null,
+   "basis": "",
+   "unit": "/100 g",
+   "today": 129.5,
+   "over": null,
+   "did": "Skipped: 4.6x the price of the pick",
+   "first_label": "Morinaga Tofu Extra Firm 308 g"
+  }
+ ]
+}

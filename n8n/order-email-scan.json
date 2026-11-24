@@ -1,0 +1,82 @@
+{
+ "name": "Grocery agent: Instamart order email scan (read-only)",
+ "nodes": [
+  {
+   "name": "Start",
+   "type": "n8n-nodes-base.manualTrigger",
+   "typeVersion": 1,
+   "position": [
+    0,
+    0
+   ],
+   "parameters": {}
+  },
+  {
+   "name": "Instamart Order Emails",
+   "type": "n8n-nodes-base.gmail",
+   "typeVersion": 2.2,
+   "position": [
+    224,
+    0
+   ],
+   "parameters": {
+    "resource": "message",
+    "operation": "getAll",
+    "returnAll": true,
+    "simple": false,
+    "options": {},
+    "filters": {
+     "q": "from:noreply@instamart.in subject:\"successfully delivered\" newer_than:90d",
+     "readStatus": "both"
+    }
+   },
+   "credentials": {
+    "gmailOAuth2": {
+     "id": "CONNECT_YOUR_GMAIL",
+     "name": "Gmail"
+    }
+   }
+  },
+  {
+   "name": "Extract Items",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    440,
+    0
+   ],
+   "parameters": {
+    "mode": "runOnceForAllItems",
+    "language": "javaScript",
+    "jsCode": "const rows = [];\nconst strip = (h) => String(h || '').replace(/<style[\\s\\S]*?<\\/style>/gi, ' ').replace(/<br\\s*\\/?>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/&nbsp;/g, ' ').replace(/&#8377;|&#x20b9;|&rupee;/gi, '₹').replace(/&amp;/g, '&').replace(/\\s+/g, ' ');\nfor (const it of $input.all()) {\n  const j = it.json;\n  const raw = (j.text && String(j.text).trim()) ? String(j.text).replace(/\\s+/g, ' ') : strip(typeof j.html === 'string' ? j.html : j.textAsHtml);\n  const orderId = (raw.match(/order id:?\\s*(\\d+)/i) || [])[1] || '';\n  const start = raw.search(/Order Items/i);\n  let seg = start >= 0 ? raw.slice(start + 11) : '';\n  const stop = seg.search(/Item Total|Item Bill|Bill Details|Sub Total|Subtotal|Grand Total|Order Total|Payment/i);\n  if (stop > 0) seg = seg.slice(0, stop);\n  const re = /(\\d+) x (.+?) ₹\\s?([\\d,]+(?:\\.\\d+)?)/g;\n  let m; let n = 0;\n  while ((m = re.exec(seg)) !== null) {\n    n++;\n    rows.push({ json: { date: String(j.date || '').slice(0, 10), orderId, qty: Number(m[1]), item: m[2].trim(), lineTotal: Number(m[3].replace(/,/g, '')) } });\n  }\n  if (n === 0) rows.push({ json: { date: String(j.date || '').slice(0, 10), orderId, qty: 0, item: 'PARSE_FAILED', lineTotal: 0 } });\n}\nreturn rows;"
+   }
+  }
+ ],
+ "connections": {
+  "Start": {
+   "main": [
+    [
+     {
+      "node": "Instamart Order Emails",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Instamart Order Emails": {
+   "main": [
+    [
+     {
+      "node": "Extract Items",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1"
+ }
+}
